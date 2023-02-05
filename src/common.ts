@@ -1,0 +1,1 @@
+export type MappedObject = Record<string | number, any>

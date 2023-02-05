@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "module": "commonjs",
+    "lib": [
+      "DOM",
+      "ES2020"
+    ],
+    "declaration": true,
+    "outDir": "./lib",
+    "strict": true,
+    "baseUrl": "./",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+  }
+}

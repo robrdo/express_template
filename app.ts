@@ -1,6 +1,6 @@
 import * as dotenv from 'dotenv';
 import { exit } from "process";
-import TestApp from "src/testApp";
+import TestApp from "./src/testApp";
 
 console.log('starting the application')
 process.on('uncaughtException', (err, origin) => {

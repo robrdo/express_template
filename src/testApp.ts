@@ -1,5 +1,8 @@
 import bodyParser from "body-parser";
 import express, { Application } from "express";
+import { AreasRepo } from "./businessLayer/areasRepo";
+import { DataProvider } from "./businessLayer/dataProvider";
+import AreaController from "./serverLayer/controllers/areasController";
 import errorMiddleware from "./serverLayer/middleware/errorMiddleware";
 
 export default class TestApp {
@@ -9,6 +12,7 @@ export default class TestApp {
     }
 
     public async init() {
+        await this.initDb()
         this.initMiddlewares()
         this.useHealthController()
         this.registerControllers()
@@ -19,6 +23,10 @@ export default class TestApp {
         this._app.listen(port, () => {
             console.log(`App listening on the port ${port}`);
         });
+    }
+
+    private async initDb() {
+        await DataProvider.initDb()
     }
 
     private initMiddlewares() {
@@ -39,7 +47,9 @@ export default class TestApp {
     }
 
     private registerControllers() {
-
+        const repo = new AreasRepo()
+        const areasController = new AreaController(repo)
+        this._app.get('/areas', (req, res) => areasController.getAreas(req, res))
     }
 
     private printRoutes(): string[] {

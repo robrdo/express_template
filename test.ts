@@ -1,1 +1,1 @@
-console.log('works')
+const map: Map<string, Function[]> = new Map();

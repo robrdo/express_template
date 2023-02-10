@@ -6,6 +6,7 @@ export class DataProvider {
     private static _wasInit = false
     private static _db: MappedObject[]
     private static _keys: Set<string>
+    private static _indexedDb: Map<string, MappedObject> = new Map()
 
 
     static async initDb() {
@@ -14,6 +15,11 @@ export class DataProvider {
             const data = await fs.readFile('neighborhoods_data.json', { encoding: 'utf-8' })
             this._db = JSON.parse(data)
             this._keys = new Set(this._db.flatMap(Object.keys))
+            //todo: finish
+            //             for (const item of this._db){
+            // Object.entries
+            //             }
+            //             this._indexedDb = new Map(this._db.map([]))
         }
         catch (err: any) {
             console.log(err)

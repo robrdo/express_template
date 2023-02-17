@@ -9,6 +9,7 @@ type Action = {
 export class AreasRepo {
     private readonly _db = DataProvider.getDb()
     private readonly _keys = DataProvider.keys
+    private readonly _indices = DataProvider.indices
 
     get(filter: Filter) {
         const actions: Action[] = []
@@ -42,6 +43,13 @@ export class AreasRepo {
 
             anotherRes = temp
         }
+
+        // let spareRes = this._indices
+        // for (const action of actions) {
+        //     if (this._indices.){
+
+        //     }
+        // }
 
 
 
@@ -79,15 +87,11 @@ export class AreasRepo {
                         continue
                     }
 
-                    return left[order] < right[order] ? -1 : 1;
+                    return left[order] < right[order] ? -1 : 1
                 }
-                return 0;
+                return 0
             })
             : res
-
-        //from(this._db.pipe).pipe(
-        //   //  ...actions.map(x=>filter(x))
-        // )
     }
 
 
